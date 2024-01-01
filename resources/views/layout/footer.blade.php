@@ -1,6 +1,5 @@
 <div class="footer-left">
-    Copyright &copy; 2018 <div class="bullet"></div> Design By <a href="https://nauv.al/">Muhamad
-        Nauval Azhar</a>
+    Copyright &copy; 2018 <div class="bullet"></div> Design By <a href="https://nauv.al/">Muhamad Nauval Azhar</a> & Develop by <a href="https://nauv.al/">Rely Arfadillah</a>
 </div>
 <div class="footer-right">
     2.3.0
