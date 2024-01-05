@@ -20,10 +20,8 @@
                         <div class="form-group">
                             <label for="email">Email</label>
                             <input id="email" type="email"
-                                class="form-control
-                                @error('email') is-invalid @enderror
-                                name="email"
-                                tabindex="1" autofocus>
+                                class="form-control @error('email') is-invalid @enderror" name="email" tabindex="1"
+                                autofocus>
                             @error('email')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -41,9 +39,7 @@
                                 </div>
                             </div>
                             <input id="password" type="password"
-                                class="form-control
-                                @error('password') is-invalid @enderror"
-                                name="password" tabindex="2">
+                                class="form-control @error('password') is-invalid @enderror" name="password" tabindex="2">
                             @error('password')
                                 <div class="invalid-feedback">
                                     {{ $message }}
