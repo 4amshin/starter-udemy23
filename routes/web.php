@@ -18,8 +18,9 @@ Route::get('/', function () {
 });
 
 
-Route::middleware(['auth'])->group(function(){
-    Route::get('home', function() {
+Route::middleware(['auth'])->group(function () {
+    Route::get('home', function () {
+        // dd(auth()->user());
         return view('dashboard.home');
     })->name('home');
 });
