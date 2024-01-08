@@ -17,9 +17,9 @@
                             A new email verification link has been emailed to you!
                         </div>
                     @else
-                    <div class="mb-4 font-medium text-sm text-green-600">
-                        Please Verify your Email
-                    </div>
+                        <div class="mb-4 font-medium text-sm text-green-600">
+                            Please Verify your Email
+                        </div>
                     @endif
 
                     <form method="POST" action="{{ route('verification.send') }}" class="needs-validation" novalidate="">
