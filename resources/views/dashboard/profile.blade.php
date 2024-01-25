@@ -2,6 +2,14 @@
 
 @section('title', 'Edit Profile')
 
+@php
+    $userName = auth()->user()->name;
+    $role = auth()->user()->role;
+    $bio = auth()->user()->bio;
+    $email = auth()->user()->email;
+    $phone = auth()->user()->phone;
+@endphp
+
 @section('content')
     <section class="section">
         <div class="section-header">
@@ -9,7 +17,7 @@
         </div>
 
         <div class="section-body">
-            <h2 class="section-title">Hi, Ujang!</h2>
+            <h2 class="section-title">Hi, {{ $userName }}!</h2>
             <p class="section-lead">
                 Change information about yourself on this page.
             </p>
@@ -36,18 +44,15 @@
                             </div>
                         </div>
                         <div class="profile-widget-description">
-                            <div class="profile-widget-name">Ujang Maman <div
+                            <div class="profile-widget-name">{{ $userName }} <div
                                     class="text-muted d-inline font-weight-normal">
-                                    <div class="slash"></div> Web Developer
+                                    <div class="slash"></div> {{ $role }}
                                 </div>
                             </div>
-                            Ujang maman is a superhero name in <b>Indonesia</b>, especially in my family. He is not a
-                            fictional character but an original hero in my family, a hero for his children and for his wife.
-                            So, I use the name as a user in this template. Not a tribute, I'm just bored with <b>'John
-                                Doe'</b>.
+                            {{ $bio }}</b>.
                         </div>
                         <div class="card-footer text-center">
-                            <div class="font-weight-bold mb-2">Follow Ujang On</div>
+                            <div class="font-weight-bold mb-2">Follow {{ $userName }} On</div>
                             <a href="#" class="btn btn-social-icon btn-facebook mr-1">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
@@ -72,55 +77,39 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="form-group col-md-6 col-12">
-                                        <label>First Name</label>
-                                        <input type="text" class="form-control" value="Ujang" required="">
+                                        <label>Name</label>
+                                        <input type="text" class="form-control" value="{{ $userName }}"
+                                            required="">
                                         <div class="invalid-feedback">
-                                            Please fill in the first name
+                                            Please fill in your name
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6 col-12">
-                                        <label>Last Name</label>
-                                        <input type="text" class="form-control" value="Maman" required="">
-                                        <div class="invalid-feedback">
-                                            Please fill in the last name
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group col-md-7 col-12">
                                         <label>Email</label>
-                                        <input type="email" class="form-control" value="ujang@maman.com" required="">
+                                        <input type="email" class="form-control" value="{{ $email }}"
+                                            required="">
                                         <div class="invalid-feedback">
                                             Please fill in the email
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-5 col-12">
+                                </div>
+                                <div class="row">
+
+                                    <div class="form-group col-md-12 col-12">
                                         <label>Phone</label>
-                                        <input type="tel" class="form-control" value="">
+                                        <input type="tel" class="form-control" value="{{ $phone }}">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-12">
                                         <label>Bio</label>
-                                        <textarea class="form-control summernote-simple">Ujang maman is a superhero name in <b>Indonesia</b>, especially in my family. He is not a fictional character but an original hero in my family, a hero for his children and for his wife. So, I use the name as a user in this template. Not a tribute, I'm just bored with <b>'John Doe'</b>.</textarea>
+                                        <textarea class="form-control summernote-simple">{{ $bio }}</textarea>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="form-group mb-0 col-12">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" name="remember" class="custom-control-input"
-                                                id="newsletter">
-                                            <label class="custom-control-label" for="newsletter">Subscribe to
-                                                newsletter</label>
-                                            <div class="text-muted form-text">
-                                                You will get new information about products, offers and promotions
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </div>
                             <div class="card-footer text-right">
-                                <button class="btn btn-primary">Save Changes</button>
+                                <button class="btn btn-primary" type="submit">Save Changes</button>
                             </div>
                         </form>
                     </div>
