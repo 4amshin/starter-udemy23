@@ -68,46 +68,70 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-12 col-md-12 col-lg-7">
                     <div class="card">
-                        <form method="post" class="needs-validation" novalidate="">
+                        <form method="POST" action="{{ route('user-profile-information.update') }}"
+                            class="needs-validation" novalidate="">
+                            @method('PUT')
+                            @csrf
                             <div class="card-header">
                                 <h4>Edit Profile</h4>
                             </div>
+
                             <div class="card-body">
                                 <div class="row">
                                     <div class="form-group col-md-6 col-12">
                                         <label>Name</label>
-                                        <input type="text" class="form-control" value="{{ $userName }}"
-                                            required="">
-                                        <div class="invalid-feedback">
-                                            Please fill in your name
-                                        </div>
+                                        <input name="name" type="text"
+                                            class="form-control @error('name') is-invalid @enderror"
+                                            value="{{ $userName }}">
+                                        @error('name')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
                                     <div class="form-group col-md-6 col-12">
                                         <label>Email</label>
-                                        <input type="email" class="form-control" value="{{ $email }}"
-                                            required="">
-                                        <div class="invalid-feedback">
-                                            Please fill in the email
-                                        </div>
+                                        <input name="email" type="email"
+                                            class="form-control @error('email') is-invalid @enderror"
+                                            value="{{ $email }}">
+                                        @error('email')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="row">
 
                                     <div class="form-group col-md-12 col-12">
                                         <label>Phone</label>
-                                        <input type="tel" class="form-control" value="{{ $phone }}">
+                                        <input name="phone" type="tel"
+                                            class="form-control @error('phone') is-invalid @enderror"
+                                            value="{{ $phone }}">
+                                        @error('phone')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-12">
                                         <label>Bio</label>
-                                        <textarea class="form-control summernote-simple">{{ $bio }}</textarea>
+                                        <textarea name="bio" class="form-control summernote-simple @error('bio') is-invalid @enderror">{{ $bio }}</textarea>
+                                        @error('bio')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
                                 </div>
 
                             </div>
+
                             <div class="card-footer text-right">
                                 <button class="btn btn-primary" type="submit">Save Changes</button>
                             </div>
