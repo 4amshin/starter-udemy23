@@ -29,7 +29,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 Rule::unique('users')->ignore($user->id),
             ],
             'phone' => 'nullable|numeric|digits_between:10,12',
-        ])->validate();
+        ])->validateWithBag('updateProfileInformation');
 
         if ($input['email'] !== $user->email &&
             $user instanceof MustVerifyEmail) {
