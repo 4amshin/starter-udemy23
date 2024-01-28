@@ -21,13 +21,16 @@ Route::get('/', function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('home', function () {
-        // dd(auth()->user());
         return view('dashboard.home');
     })->name('home');
 
-    Route::get('edit-profile', function() {
+    Route::get('change-profile', function() {
         return view('dashboard.profile');
-    })->name('profile.edit');
+    })->name('profile');
 
-    Route::resource('users', UserController::class);
+    Route::resource('user', UserController::class);
+
+    // Route::get('user-list', function() {
+    //     return view('user.index');
+    // })->name('user-list');
 });
