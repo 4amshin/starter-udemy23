@@ -17,10 +17,12 @@
             <div class="row mt-4">
                 <div class="col-12">
                     <div class="card">
+
                         <div class="card-header">
-                            <h4>All Posts</h4>
+                            <h4>All Users</h4>
                         </div>
                         <div class="card-body">
+
                             <div class="float-left">
                                 <form>
                                     <div class="input-group">
@@ -43,50 +45,40 @@
                                         <th>Phone</th>
                                         <th>Status</th>
                                     </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>
-                                            Rely Arfadillah
-                                        </td>
-                                        <td>
-                                            shin@gmail.com
-                                        </td>
-                                        <td>
-                                            0895635090134>
-                                        </td>
-                                        <td>
-                                            <div class="badge badge-primary">Verified</div>
-                                        </td>
-
+                                    @foreach ($users as $index => $user)
+                                        <tr>
+                                            <td>
+                                                {{ $index + $users->firstItem() }}
+                                            </td>
+                                            <td>
+                                                {{ $user->name }}
+                                            </td>
+                                            <td>
+                                                {{ $user->email }}
+                                            </td>
+                                            <td>
+                                                {{ $user->phone }}
+                                            </td>
+                                            <td>
+                                                @if ($user->email_verified_at != null)
+                                                    <div class="badge badge-primary">Verified</div>
+                                                @else
+                                                    <div class="badge badge-warning">Unverified</div>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </table>
                             </div>
+
                             <div class="float-right">
                                 <nav>
                                     <ul class="pagination">
-                                        <li class="page-item disabled">
-                                            <a class="page-link" href="#" aria-label="Previous">
-                                                <span aria-hidden="true">&laquo;</span>
-                                                <span class="sr-only">Previous</span>
-                                            </a>
-                                        </li>
-                                        <li class="page-item active">
-                                            <a class="page-link" href="#">1</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">2</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">3</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#" aria-label="Next">
-                                                <span aria-hidden="true">&raquo;</span>
-                                                <span class="sr-only">Next</span>
-                                            </a>
-                                        </li>
+                                        {{ $users->links() }}
                                     </ul>
                                 </nav>
                             </div>
+
                         </div>
                     </div>
                 </div>
