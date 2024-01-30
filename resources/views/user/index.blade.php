@@ -24,9 +24,9 @@
                         <div class="card-body">
 
                             <div class="float-left">
-                                <form>
+                                <form method="GET">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Search">
+                                        <input name="search" type="text" class="form-control" placeholder="Search">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary"><i class="fas fa-search"></i></button>
                                         </div>
@@ -45,7 +45,8 @@
                                         <th>Phone</th>
                                         <th>Status</th>
                                     </tr>
-                                    @foreach ($users as $index => $user)
+
+                                    @forelse ($users as $index => $user)
                                         <tr>
                                             <td>
                                                 {{ $index + $users->firstItem() }}
@@ -61,20 +62,24 @@
                                             </td>
                                             <td>
                                                 @if ($user->email_verified_at != null)
-                                                    <div class="badge badge-primary">Verified</div>
+                                                    <div class="badge badge-success">Active</div>
                                                 @else
-                                                    <div class="badge badge-warning">Unverified</div>
+                                                    <div class="badge badge-warning">Pending</div>
                                                 @endif
                                             </td>
                                         </tr>
-                                    @endforeach
+                                    @empty
+                                        <tr>
+                                            <td>No Data Found</td>
+                                        </tr>
+                                    @endforelse
                                 </table>
                             </div>
 
                             <div class="float-right">
                                 <nav>
                                     <ul class="pagination">
-                                        {{ $users->links() }}
+                                        {{ $users->withQueryString()->links() }}
                                     </ul>
                                 </nav>
                             </div>
