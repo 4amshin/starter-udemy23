@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DemoFileUploadController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,13 +19,14 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::get('/demo-file-upload', [DemoFileUploadController::class, 'index']);
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('home', function () {
         return view('dashboard.home');
     })->name('home');
 
-    Route::get('change-profile', function() {
+    Route::get('change-profile', function () {
         return view('dashboard.profile');
     })->name('profile');
 

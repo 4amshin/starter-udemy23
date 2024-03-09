@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Providers;
+
 use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -10,7 +11,7 @@ class AuthServiceProvider extends ServiceProvider
     public static $permission = [
         //user management
         'index-user' => ['superadmin'],
-        'show-user' => ['superadmin','admin'],
+        'show-user' => ['superadmin', 'admin'],
         'create-user' => ['superadmin'],
         'store-user' => ['superadmin'],
         'edit-user' => ['superadmin'],
@@ -36,7 +37,7 @@ class AuthServiceProvider extends ServiceProvider
 
         //setup superadmin bisa semua
         Gate::before(
-            function($user, $ability) {
+            function ($user, $ability) {
                 if ($user->role === 'superadmin') {
                     return true;
                 }
@@ -50,6 +51,5 @@ class AuthServiceProvider extends ServiceProvider
                 }
             });
         }
-
     }
 }

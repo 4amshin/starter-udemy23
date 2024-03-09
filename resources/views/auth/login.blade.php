@@ -19,9 +19,8 @@
                         @csrf
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input id="email" type="email"
-                                class="form-control @error('email') is-invalid @enderror" name="email" tabindex="1"
-                                autofocus>
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                                name="email" tabindex="1" autofocus>
                             @error('email')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -33,7 +32,7 @@
                             <div class="d-block">
                                 <label for="password" class="control-label">Password</label>
                                 <div class="float-right">
-                                    <a href="{{ route('password.request')}}" class="text-small">
+                                    <a href="{{ route('password.request') }}" class="text-small">
                                         Forgot Password?
                                     </a>
                                 </div>

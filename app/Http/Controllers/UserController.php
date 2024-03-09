@@ -14,17 +14,19 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        if(Gate::denies('index-user')) {
+        if (Gate::denies('index-user')) {
             abort(403, 'Anda tidak bisa mengakses halaman ini');
         }
 
         // $users = User::paginate(5);
         $users = DB::table('users')
-            ->when($request->input('search'), function($query, $search) {
-                $query->where('name','like','%'. $search .'%')
-                ->orWhere('email','like','%'. $search .'%');
+            ->when($request->input('search'), function ($query, $search) {
+                $query->where('name', 'like', '%' . $search . '%')
+                    ->orWhere('email', 'like', '%' . $search . '%');
             })
             ->paginate(5);
+
+
         return view('user.index', compact('users'));
     }
 
