@@ -35,6 +35,10 @@ class DemoFileUploadController extends Controller
         // ddd($metaDefault);
 
         //mendownload file dari disk
-        return Storage::disk('surat_tugas')->download('surat_tugas.txt');
+        // return Storage::disk('surat_tugas')->download('surat_tugas.txt');
+
+        //copy file & Move File
+        Storage::disk('surat_tugas')->copy('surat_tugas.txt', 'mondok/mondok.txt');
+        Storage::disk('surat_tugas')->move('surat_tugas.txt', 'mondok/surat_tugas.txt');
     }
 }
