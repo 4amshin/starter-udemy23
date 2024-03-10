@@ -38,7 +38,27 @@ class DemoFileUploadController extends Controller
         // return Storage::disk('surat_tugas')->download('surat_tugas.txt');
 
         //copy file & Move File
-        Storage::disk('surat_tugas')->copy('surat_tugas.txt', 'mondok/mondok.txt');
-        Storage::disk('surat_tugas')->move('surat_tugas.txt', 'mondok/surat_tugas.txt');
+        // Storage::disk('surat_tugas')->copy('surat_tugas.txt', 'mondok/mondok.txt');
+        // Storage::disk('surat_tugas')->move('surat_tugas.txt', 'mondok/surat_tugas.txt');
+
+        return view('dashboard.upload-file');
+    }
+
+    public function store(Request $request)
+    {
+        //metode upload biasa
+        // $path = $request->file('file')->store('public');
+        // $path = Storage::putFile('public', $request->file('file'));
+
+        //metode upload dengan nama file custom
+        // $extension = $request->file('file')->extension();
+        // $fileName = $request->input('nama');
+        // $path = $request->file('file')->storeAs('public', $fileName . '.' . $extension);
+
+        //upload ke disk 'surat-tugas'
+        $extension = $request->file('file')->extension();
+        $fileName = $request->input('nama');
+        $path = $request->file('file')->store('surat_tugas/gambar');
+        ddd($path);
     }
 }

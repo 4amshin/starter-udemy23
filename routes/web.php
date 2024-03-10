@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/demo-file-upload', [DemoFileUploadController::class, 'index']);
+
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('home', function () {
@@ -31,6 +31,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('profile');
 
     Route::resource('user', UserController::class);
+
+    Route::get('/upload-file', [DemoFileUploadController::class, 'index'])->name('uploadFile.index');
+    Route::post('/upload-file', [DemoFileUploadController::class, 'store'])->name('uploadFile.store');
 
     // Route::get('user-list', function() {
     //     return view('user.index');
